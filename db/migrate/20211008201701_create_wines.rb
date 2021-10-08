@@ -4,7 +4,7 @@ class CreateWines < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :appelation
       t.string :vintage
-      t.decimal :price
+      t.decimal :price, precision: 8, scale: 2
       t.string :image_url
       t.text :description
       t.integer :quantity
