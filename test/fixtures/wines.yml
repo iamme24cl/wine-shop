@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  appelation: MyString
+  vintage: MyString
+  price: 9.99
+  image_url: MyString
+  description: MyText
+  quantity: 1
+  varietal_id: 1
+
+two:
+  name: MyString
+  appelation: MyString
+  vintage: MyString
+  price: 9.99
+  image_url: MyString
+  description: MyText
+  quantity: 1
+  varietal_id: 1
