@@ -5,7 +5,7 @@ class CreateShoppingCartItems < ActiveRecord::Migration[6.1]
       t.integer :wine_id
       t.integer :shopping_cart_id
       t.decimal :total, precision: 10, scale: 2
-      t.decimal ":unit_price, precision: 10, scale: 2
+      t.decimal :unit_price, precision: 10, scale: 2
       t.string :image
       t.string :name
 
