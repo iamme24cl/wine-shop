@@ -6,6 +6,8 @@ class ApplicationController < ActionController::API
   end
 
   def current_shopping_cart
-    @current_shopping_cart ||= ShopingCart.find_by(id: cookies[:shopping_cart_id] if cookies[:shopping_cart_id])
+    @current_shopping_cart ||= ShoppingCart.find_by(
+      id: current_user.current_card_id if current_user.current_card_id
+    )
   end
 end
