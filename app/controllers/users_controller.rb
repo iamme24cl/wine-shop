@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
 
   def index
-    users = User.all 
+    users = User.all
     render json: { users: users }
   end
 
   def create
     user = User.new(user_params)
     if user.save
-      cookies[:user_id] = user.id
+      user.token = token(user.id)
       cart = user.shopping_carts.create!
       user.current_card_id = cart.id
-
+      user.save
       render json: {
         status: 200,
         user: user,
@@ -24,12 +24,13 @@ class UsersController < ApplicationController
   end
 
   def login_status
-    if current_user
+    if client_has_valid_token?
+      cart = current_shopping_cart(current_user)
       render json: {
         logged_in: true,
         user: current_user,
-        cart: current_shopping_cart,
-        cart_items: current_shopping_cart.shopping_cart_items
+        cart: cart,
+        cart_items: cart.shopping_cart_items
       }
     else
       render json: {logged_in: false, message: "Please log in."}
